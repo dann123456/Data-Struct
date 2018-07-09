@@ -53,6 +53,7 @@ class maxheap():
 
 m = maxheap([95, 3, 21])
 m.push(10)
+m.push(23)
 print(str(m.heap[0:len(m.heap)]))
 print(str(m.pop()))
 print(str(m.heap[0:len(m.heap)]))
