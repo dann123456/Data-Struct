@@ -32,26 +32,39 @@ class trie():
 			nex = nex.child[index]
 		return nex != None and nex.flag
 
+	def delete(self, key):
+		nex = self.root
+		for char in list(key):
+			index = self.gethash(char)
+			#if index is none, no node found
+			if nex.child[index] == None:
+				return False
+			#if there is then a node, the focus move on to that node
+			nex = nex.child[index]
+		nex.flag = False
+		return nex != None and nex.flag
+
 def main():
- 
-    # Input keys (use only 'a' through 'z' and lower case)
-    keys = ["the","a","there","anaswe","any",
-            "by","their"]
-    output = ["Not present in trie",
-              "Present in tire"]
- 
-    # Trie object
-    t = trie()
- 
-    # Construct trie
-    for key in keys:
-        t.add(key)
- 
-    # Search for different keys
-    print("{} ---- {}".format("the",output[t.search("the")]))
-    print("{} ---- {}".format("these",output[t.search("these")]))
-    print("{} ---- {}".format("their",output[t.search("their")]))
-    print("{} ---- {}".format("thaw",output[t.search("thaw")]))
- 
+	# Input keys (use only 'a' through 'z' and lower case)
+	keys = ["the","a","there","answer","any",
+	        "by","their"]
+	output = ["Not present in trie",
+	          "Present in trie"]
+
+	# Trie object
+	t = trie()
+		
+	# Construct trie
+	for key in keys:
+		t.add(key)
+	# Delete "the"
+	t.delete("the")
+	
+	# Search for different keys
+	print("{} ---- {}".format("the",output[t.search("the")]))
+	print("{} ---- {}".format("these",output[t.search("these")]))
+	print("{} ---- {}".format("their",output[t.search("their")]))
+	print("{} ---- {}".format("thaw",output[t.search("thaw")])) 
+
 if __name__ == '__main__':
-    main()
+	main()
