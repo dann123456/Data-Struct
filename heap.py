@@ -43,13 +43,13 @@ class maxheap():
 		right = x*2+1
 		left = x*2
 		top = x
-		if len(self.heap) > right:	
-			if self.heap[top] < self.heap[right]:
-				self.swap(top, right)
-				return self.bubbledown(right)
-			if self.heap[top] < self.heap[left]:
-				self.swap(top, left)
-				return self.bubbledown(left)
+		if len(self.heap) > left and self.heap[top] < self.heap[left]:	
+			top = left
+		if len(self.heap) > right and self.heap[top] < self.heap[right]:
+			top = right
+		if top != x:
+			self.swap(top, x)
+			return self.bubbledown(top)
 
 m = maxheap([95, 3, 21])
 m.push(10)
